@@ -1,0 +1,22 @@
+.levels {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.other-content {
+  padding-left: 20px;
+}
+
+.data-container {
+  padding-top: 50px;
+}
+
+.error {
+  font-size: 12px;
+  color: white;
+  background: red;
+}
+
+.btn {
+  cursor: pointer;
+}
+

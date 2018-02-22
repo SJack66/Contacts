@@ -1,0 +1,34 @@
+.sidebar {
+  width: 180px;
+  background: #4cae4c;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.logo {
+  margin: 30px auto;
+  width: 120px;
+  display: block;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-item{
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+ li:hover {
+   background: green;
+   -moz-transition: 300ms;
+ }
+ li.active {
+   background: darkgreen;
+ }

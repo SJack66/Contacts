@@ -1,0 +1,101 @@
+<app-header>
+  <p levels>K O N T A K T Y</p>
+  <div content>
+    <p>Lista kontaktów</p>
+  </div>
+</app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 offset-1">
+      <table class="table table-hover">
+        <thead class="table-success text-xl-center text-uppercase">
+        <tr>
+          <th>Imię i nazwisko</th>
+          <th>Telefon</th>
+          <th>e-mail</th>
+          <th>Adres</th>
+          <th>Akcja</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor ="let contact of contacts; let i = index" (click)="goToDetailContact(contact)" class="row-contact" >
+          <td>{{ contact?.firstName }} {{ contact?.lastName }} </td>
+          <td>{{ contact?.phone }}</td>
+          <td>{{ contact?.email }}</td>
+          <td>{{ contact?.addressPostCode }} {{ contact?.addressCity }}, ul. {{ contact?.addressStreet }}</td>
+          <td>
+          <button (click)="removeContact(contact, $event)" type="submit" class="btn btn-primary">Kasuj</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="col-sm-10">
+        <br>
+      <p class="data-header h5">DODAJ KONTAKT</p>
+      <div class="data-container">
+        <form [formGroup] = "contactForm">
+
+          <div class="row form-group">
+            <div class="col-sm-4 offset-1">
+               <label>IMIĘ</label>
+               <input formControlName="firstName" type="text" class="form-control" placeholder="Imię">
+               <p *ngIf="!contactForm.get('firstName').valid && contactForm.get('firstName').dirty" class="error">
+                 To pole jest wymagane!</p>
+            </div>
+            <div class="col-sm-4">
+              <label>NAZWISKO</label>
+               <input formControlName="lastName" type="text" class="form-control" placeholder="Nazwisko">
+               <p *ngIf="!contactForm.get('lastName').valid && contactForm.get('lastName').dirty" class="error">
+                 To pole jest wymagane!</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-4 offset-1">
+              <label>TELEFON</label>
+               <input formControlName="phone" type="text" class="form-control" placeholder="Telefon">
+               <p *ngIf="!contactForm.get('phone').valid && contactForm.get('phone').dirty" class="error">
+                 To pole musi mieć minimum 9 znaków!</p>
+             </div>
+             <div class="col-sm-4">
+               <label>E-MAIL</label>
+               <input formControlName="email" type="text" class="form-control" placeholder="e-mail">
+               <p *ngIf="!contactForm.get('email').valid && contactForm.get('email').dirty" class="error">
+                 To nie jest adres email!</p>
+             </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-2 offset-1">
+              <label>KOD POCZTOWY</label>
+              <input formControlName="addressPostCode" type="text" class="form-control" placeholder="Kod poczt.">
+              <p *ngIf="!contactForm.get('addressPostCode').valid && contactForm.get('addressPostCode').dirty" class="error">
+                To pole musi mieć 6 znaków!</p>
+            </div>
+            <div class="col-sm-4">
+              <label>MIASTO</label>
+              <input formControlName="addressCity" type="text" class="form-control" placeholder="Miasto">
+              <p *ngIf="!contactForm.get('addressCity').valid && contactForm.get('addressCity').dirty" class="error">
+                To pole jest wymagane!</p>
+            </div>
+            <div class="col-sm-4">
+              <label>ULICA</label>
+              <input formControlName="addressStreet" type="text" class="form-control" placeholder="Ulica">
+              <p *ngIf="!contactForm.get('addressStreet').valid && contactForm.get('addressStreet').dirty" class="error">
+                To pole jest wymagane!</p>
+            </div>
+          </div>
+          <br>
+          <div class="row form-group">
+            <div class="col-sm-10 offset-10 ">
+              <button (click)="contactForm.reset()" type="submit" class="btn btn-danger">COFNIJ</button>
+              <button [disabled] = "contactForm.invalid" (click)="addContact()" type="submit" class="btn btn-info">DODAJ</button>
+              <br><br>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

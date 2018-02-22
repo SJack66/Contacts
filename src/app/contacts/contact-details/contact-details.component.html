@@ -1,0 +1,73 @@
+<app-header>
+  <p levels>KONTAKTY / {{contact.firstName}} {{contact.lastName}}</p>
+  <div content>
+    <p>DANE KONTAKTU</p>
+  </div>
+</app-header>
+
+<p class="data-header h5">Edycja: {{contact.firstName}} {{contact.lastName}}</p>
+<div class="data-container">
+  <form [formGroup] = "contactForm">
+
+    <div class="row form-group">
+      <div class="col-sm-3 offset-1">
+        <label>IMIĘ</label>
+        <input formControlName="firstName" type="text" class="form-control" placeholder="Imię">
+        <p *ngIf="!contactForm.get('firstName').valid && contactForm.get('firstName').dirty" class="error">
+          To pole jest wymagane!</p>
+      </div>
+      <div class="col-sm-3">
+        <label>NAZWISKO</label>
+        <input formControlName="lastName" type="text" class="form-control" placeholder="Nazwisko">
+        <p *ngIf="!contactForm.get('lastName').valid && contactForm.get('lastName').dirty" class="error">
+          To pole jest wymagane!</p>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-3 offset-1">
+        <label>TELEFON</label>
+        <input formControlName="phone" type="text" class="form-control" placeholder="Telefon">
+        <p *ngIf="!contactForm.get('phone').valid && contactForm.get('phone').dirty" class="error">
+          To pole musi mieć minimum 9 znaków!</p>
+      </div>
+      <div class="col-sm-3">
+        <label>E-MAIL</label>
+        <input formControlName="email" type="text" class="form-control" placeholder="e-mail">
+        <p *ngIf="!contactForm.get('email').valid && contactForm.get('email').dirty" class="error">
+          To nie jest adres email!</p>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-3 offset-1">
+        <label>KOD POCZTOWY</label>
+        <input formControlName="addressPostCode" type="text" class="form-control" placeholder="Kod pocztowy">
+        <p *ngIf="!contactForm.get('addressPostCode').valid && contactForm.get('addressPostCode').dirty" class="error">
+          To pole musi mieć 6 znaków!</p>
+      </div>
+      <div class="col-sm-3">
+        <label>MIASTO</label>
+        <input formControlName="addressCity" type="text" class="form-control" placeholder="Miasto">
+        <p *ngIf="!contactForm.get('addressCity').valid && contactForm.get('addressCity').dirty" class="error">
+          To pole jest wymagane!</p>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-3 offset-1">
+        <label>ULICA</label>
+        <input formControlName="addressStreet" type="text" class="form-control" placeholder="Ulica">
+        <p *ngIf="!contactForm.get('addressStreet').valid && contactForm.get('addressStreet').dirty" class="error">
+          To pole jest wymagane!</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 offset-7">
+        <button (click)="contactForm.reset()" type="submit" class="btn btn-danger">COFNIJ</button>
+        <button [disabled] = "contactForm.invalid" (click)="updateContact()" type="submit" class="btn btn-info">EDYTUJ</button>
+      </div>
+    </div>
+  </form>
+</div>

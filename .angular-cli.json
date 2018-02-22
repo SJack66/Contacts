@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootswatch/dist/superhero/bootstrap.min.css",
         "styles.css"
       ],
       "scripts": [],
@@ -55,6 +56,14 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {
+      "spec": false
+    },
+  "directive": {
+      "spec": false
+    },
+  "service": {
+      "spec": false
+    }
   }
 }
