@@ -1,16 +1,16 @@
 <app-header>
   <p levels>KONTAKTY / {{contact.firstName}} {{contact.lastName}}</p>
-  <div content>
+<!--  <div content>
     <p>DANE KONTAKTU</p>
-  </div>
+  </div> -->
 </app-header>
 
-<p class="data-header h5">Edycja: {{contact.firstName}} {{contact.lastName}}</p>
+<!--<p class="data-header h5">Edycja: {{contact.firstName}} {{contact.lastName}}</p> -->
 <div class="data-container">
   <form [formGroup] = "contactForm">
 
     <div class="row form-group">
-      <div class="col-sm-3 offset-1">
+      <div class="col-sm-2 offset-1">
         <label>IMIĘ</label>
         <input formControlName="firstName" type="text" class="form-control" placeholder="Imię">
         <p *ngIf="!contactForm.get('firstName').valid && contactForm.get('firstName').dirty" class="error">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="row form-group">
-      <div class="col-sm-3 offset-1">
+      <div class="col-sm-2 offset-1">
         <label>TELEFON</label>
         <input formControlName="phone" type="text" class="form-control" placeholder="Telefon">
         <p *ngIf="!contactForm.get('phone').valid && contactForm.get('phone').dirty" class="error">
@@ -40,7 +40,7 @@
     </div>
 
     <div class="row form-group">
-      <div class="col-sm-3 offset-1">
+      <div class="col-sm-2 offset-1">
         <label>KOD POCZTOWY</label>
         <input formControlName="addressPostCode" type="text" class="form-control" placeholder="Kod pocztowy">
         <p *ngIf="!contactForm.get('addressPostCode').valid && contactForm.get('addressPostCode').dirty" class="error">
@@ -52,19 +52,16 @@
         <p *ngIf="!contactForm.get('addressCity').valid && contactForm.get('addressCity').dirty" class="error">
           To pole jest wymagane!</p>
       </div>
-    </div>
-
-    <div class="row form-group">
-      <div class="col-sm-3 offset-1">
+      <div class="col-sm-3">
         <label>ULICA</label>
         <input formControlName="addressStreet" type="text" class="form-control" placeholder="Ulica">
         <p *ngIf="!contactForm.get('addressStreet').valid && contactForm.get('addressStreet').dirty" class="error">
           To pole jest wymagane!</p>
       </div>
     </div>
-
     <div class="row">
-      <div class="col-sm-6 offset-7">
+      <div class="col-sm-6 offset-6">
+        <br>
         <button (click)="contactForm.reset()" type="submit" class="btn btn-danger">COFNIJ</button>
         <button [disabled] = "contactForm.invalid" (click)="updateContact()" type="submit" class="btn btn-info">EDYTUJ</button>
       </div>
